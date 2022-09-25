@@ -1,17 +1,19 @@
 let user = [
     {
-        name:"Bob"
+        name:"Bob",
+        password:"1"
     },
     {
-        name:"Alice"
+        name:"Alice",
+        password:"2"
     }
 ]
 
 let user_session = [
     {
         name: "Bob",
-        login : true
+        expire: "1day"
     }
 ]
-exports.user = user
+exports.users = user
 exports.user_session = user_session

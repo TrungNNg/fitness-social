@@ -38,12 +38,10 @@ learn how to use Expressjs with Vuejs [X]
 basic home base [X]
 build registration page [X]
 build login page [X]
-build route for login post, user creation post [ ]
-build login API [ ]
-
-build logout API [ ]
+build route for login post, user creation post [X]
+build login API [X]
+build user creation API [X]
 create and connect to MongoDB [ ]
-build user creation API [ ]
 
 [ ] define user table (collection)
 [ ] denide user session
