@@ -34,12 +34,16 @@ authentication using session
 
 ## TODO
 set up basic Express server [X]
-learn how to user Expressjs with Vuejs [ ]
-basic home base [ ]
-build registration page [ ]
-build login page [ ]
-build logput page [ ]
+learn how to use Expressjs with Vuejs [X]
+basic home base [X]
+build registration page [X]
+build login page [X]
+build route for login post, user creation post [ ]
+build login API [ ]
+
+build logout API [ ]
 create and connect to MongoDB [ ]
+build user creation API [ ]
 
 [ ] define user table (collection)
 [ ] denide user session
