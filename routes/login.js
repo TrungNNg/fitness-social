@@ -1,10 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
-// testing db
-const userModule = require('../test_db/test_db.js')
-const users = userModule.users
-const user_session = userModule.user_session
+const UserModel = require('../database/database.js')
 
 // create a router middleware for login router
 // if user is already login, take them backout
@@ -28,18 +24,8 @@ router.get('/logout', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-    // check if username is dupplicated, if yes yeild error
-    // if not add to users db
-    console.log(users)
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].name === req.body.username) {
-            res.send('username taken')
-            return
-        }
-    }  
-    users.push({name:req.body.username, password:req.body.password})
-    console.log(users)
-    res.send('user created')
+    UserModel.create({username:req.body.username, password:req.body.password})
+    res.send('user created.')
 })
 
 

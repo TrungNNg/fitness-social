@@ -4,6 +4,12 @@ const port = 3000
 const LoginRouter = require('./routes/login')
 const ProfileRouter = require('./routes/profile')
 
+//MongoDB Atlas connection
+const mongoose = require('mongoose')
+mongoose.connect('mongodb+srv://root:root@cluster0.ncrlwhu.mongodb.net/?retryWrites=true&w=majority', () => {
+    console.log('db connected')
+})
+
 // Middleware
 app.use(express.static('public'))
 app.use(express.json())
