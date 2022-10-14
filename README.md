@@ -46,6 +46,8 @@ build user creation API [X]
 create and connect to MongoDB Atlas [X]
 
 [X] define user table (collection)
+[X] read reqest and respose doc in ExpressJS
+[ ] watch CS 253 Stanford
 [ ] send cookie to login user and have them send back
 [ ] build logout api
 [ ] document how to use Session authentication
@@ -57,5 +59,28 @@ create and connect to MongoDB Atlas [X]
 [ ] build basic dashboard
 [ ] update folder structure section in README.md
 
+## Problems
+
+1. How to handle authentication
+How to know if a user is logged in or not?
+if user does not have valid cookie -> not logged in
+if user have valid cookie -> logged in
+
+what is a valid cookie? -> a cookie is valid if it is in session db
+what information to send to the client and get back to know which
+user is this? -> user _id . It ok to see, but what if client create 
+cookie with random _id? -> only _id in session collection is valid.
+how to know when to delete session? -> logout API. What if user do
+not use logout? -> when user close browser, session cookie gone,
+need to login again -> what if there is a seesion in db, and user
+logged in again, there will be 2 session. -> solution: set expire 
+for session in db. 
+
+Procedure
+for private route check if logged in or not. if not send to login
+else display cookie data.
+session db have hash: id + username hash with secret salt, id,
+expire.
+use salt to decode hash, use id to identify user.
 
 
