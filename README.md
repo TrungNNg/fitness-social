@@ -46,8 +46,15 @@ build user creation API [X]
 create and connect to MongoDB Atlas [X]
 
 [X] added vuejs for frontend
-[ ] fix nav bar by adding vue router
+[X] fix nav bar by adding vue router
+[ ] craete a task component
+[ ] creat an array of task
+[ ] craete a tasklist component
+[ ] render all tasks in array to tasklist
 [ ] create 2 components login and register form
+[ ] add pinia a list of all task
+[ ] access and display on dashboard view
+[ ] create a form to add task, remove task, edit task
 [ ] create user edit component
 [ ] create user exercise list component
 [ ] finish styling home page, login, logout, user edit, user exercise list
