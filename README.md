@@ -45,6 +45,15 @@ build login API [X]
 build user creation API [X]
 create and connect to MongoDB Atlas [X]
 
+[X] added vuejs for frontend
+[ ] fix nav bar by adding vue router
+[ ] create 2 components login and register form
+[ ] create user edit component
+[ ] create user exercise list component
+[ ] finish styling home page, login, logout, user edit, user exercise list
+[ ] edit exercise form
+[ ] create footer component
+
 [X] define user table (collection)
 [X] read reqest and respose doc in ExpressJS
 [ ] watch CS 253 Stanford

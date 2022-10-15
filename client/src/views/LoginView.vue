@@ -3,5 +3,5 @@
 </script>
 
 <template> 
-    <p>About VIEW</p>
+    <p>Login View</p>
 </template>
