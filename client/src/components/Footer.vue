@@ -6,10 +6,11 @@
   <footer class="footer">
     <div class="has-text-centered">
       <h3>Follow Us</h3>
-      <span class="icon">
-        <a href="https://facebook.com"><i class="fa fa-facebook">Facebook&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></a>
-        <a href="https://twitter.com"><i class="fa fa-twitter">Twitter</i></a>
-      </span>
+      <div class="social-media">
+							<a href="https://facebook.com" target="_blank" class="button is-light is-large"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+							<a href="https://instagram.com" target="_blank" class="button is-light is-large"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+							<a href="https://twitter.com" target="_blank" class="button is-light is-large"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</div>
     </div>
   </footer>
 </template>
