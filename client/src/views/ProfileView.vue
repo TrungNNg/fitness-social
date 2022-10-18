@@ -11,6 +11,8 @@
   let w = []
   let r = []
 
+  //session.user = {username:"Bob", index:0}
+
   if (session.user === null) {
     router.push({name:"home"})
   } else {
@@ -50,29 +52,71 @@
     r.splice(index, 1)
   }
 
+  function friendRecently(name:string) {
+    console.log("hit")
+    let temp = []
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].username === name) {
+        for (let j = 0; j < data[i].recently.length; j++) {
+          temp.push(data[i].recently[j])
+        }
+        return temp
+      }
+    }
+    return []
+  }
+
 </script>
 
 <template> 
-    <div>name</div>
-    <div>{{u?.username}}</div>
-    <div>friends list</div>
-    <li v-for="f in l">{{f}}</li>
+    <div class="title" v-if="session.user != null">Wellcome {{session.user.username}}</div>
+    <section class="section m-auto">
+      <div class="columns is-centered">
+        <div class="column">
+          <nav class="panel is-success">
+            <div class="panel-heading">current workout list</div> 
+              <div class="panel-block">
+                <div class="block m-auto">
+                  <div class="field is-grouped">
+                  <div class="control">
+                    <input class="input is-success" type="text" v-model="task_name"/>
+                  </div>
+                  <div class="control">
+                    <button class="button is-info" @click="addTask()">Add task</button>
+                  </div>
+                </div>
+              </div>
+                </div>
+            <div v-for="wo in w" :key="wo" class="panel-block">
+              <span class="m-auto">{{wo}}</span><button class="button is-success" @click="removeW(wo)">Done</button>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
 
-    <span>------</span>
+    <section class="section">
+      <div class="columns is-centered">
+        <div class="column">
+          <nav class="panel is-success">
+            <p class="panel-heading">recently done list</p>         
+            <div v-for="re in r" :key="re" class="panel-block">
+              <span class="m-auto">{{re}}</span><button class="button is-danger" @click="removeR(re)">Delete</button>
+            </div>
+          </nav>
+        </div>
+      </div>     
+    </section>
 
-    <div>workouts list, click when done</div>
-    <div v-for="wo in w" :key="wo">
-        <span @click="removeW(wo)">{{wo}}</span>
-    </div>
-    <div>add workout</div>
-    <input type="text" v-model="task_name">
-    <button @click="addTask()">Add Task</button>
-
-    <span>------</span>
-
-    <div>recently workout list</div>
-    <div>click to remove task</div>
-    <div v-for="re in r" :key="re">
-        <span @click="removeR(re)">{{re}}</span>
-    </div>
+    <div class="title">Your friend's recently done exercise.</div>
+    <section class="section">
+      <div class="columns is-centered">
+        <div class="column">
+          <nav class="panel is-success"  v-for="f in l">
+            <p class="panel-heading">{{f}}'s recently done</p>         
+            <p v-for="fre in friendRecently(f)" class="panel-block">{{fre}}</p>
+          </nav>
+        </div>
+      </div>     
+    </section>
 </template>

@@ -35,6 +35,10 @@ function hasError() {
     <br/>
     <div class="column is-4 is-offset-4">
         <div class="title">Login</div>
+        <div style="color:red" >Try login with username: Bob ,password: bob123</div>
+        <div>or go to "/admin" route to see mockdata, the "/admin" route is not protected
+            to see the mock data, but the "/profile" require user login.
+        </div>
         <div class="field">
             <label class="label">username</label>
             <div class="control">

@@ -1,56 +1,39 @@
 <script setup lang="ts">
-  import {ref, reactive} from 'vue'
-  let task_name = ref('')
-  let task_time = ref(0)
+  import {ref, reactive} from 'vue';
+  import data from '../data/data.json';
+  import session from '../stores/session.js';
+  import router from '../router';
 
-  let arr = reactive([
-    {
-      name:"task 1",
-      time: 3
-    },
-    {
-      name:"task 2",
-      time: 2
-    }
-  ])
+  let users = []
 
-  // add task
-  function AddTask() {
-    let obj = {name:task_name.value, time:task_time.value}
-    arr.push(obj)
-    task_name.value = ''
-    task_time.value = 0
+  // let say bob is admin
+  session.user = {username:"Bob", index:0}
+
+  if (session.user?.username !== "Bob") {
+    router.push({name:"home"})
+  } else {
+    users = reactive(data)
   }
 
-  function Remove(a:any) {
-    console.log("remove pressed")
+  function remove(name:String) {
     let index = 0
-    for (let i = 0; i < arr.length; i++) {
-      if (a.name === arr[i].name) {
+    for (let i = 0; i < users.length; i++) {
+      if (name === users[i]) {
         index = i
         break
       }
     }
-    arr.splice(index, 1)
-    console.log(arr)
+    users.splice(index, 1)
   }
 </script>
 
 <template> 
-    <div>DASHBOARD</div>
-
-    <form>
-      <p>Add new task</p>
-      <label></label>
-      <input type="text" v-model="task_name">
-      <input type="text" v-model="task_time">
-      <button type="button" @click="AddTask">Submit</button>
-    </form>
-
-    <p>TASK LIST</p>
-    
-      <div v-for="a in arr" :key="a.name">
-        <span @click="Remove(a)">{{a}}</span>
-      </div>
+    <div>Admin Page, let say Bob is admin</div>
+    <br/>
+    <div>user list</div>
+    <div v-for="u in users" @click="remove(u)">click to remove users {{u.username}}</div>
+    <div>No user is remove in json file, just remove in component's state</div>
+    <br/>
+    <div>mock database {{data}}</div>
    
 </template>
