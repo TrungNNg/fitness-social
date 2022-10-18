@@ -32,8 +32,7 @@
     <br/>
     <div>user list</div>
     <div v-for="u in users" @click="remove(u)">click to remove users {{u.username}}</div>
-    <div>No user is remove in json file, just remove in component's state</div>
     <br/>
-    <div>mock database {{data}}</div>
+    <div>user also remove in mock database {{data}}</div>
    
 </template>
