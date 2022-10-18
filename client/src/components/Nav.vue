@@ -1,11 +1,19 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import { RouterLink } from 'vue-router';
+  import session,{logout} from '../stores/session.js';
+  import router from '@/router'
   let isActive = ref(false);
+
+  function redirect() {
+    logout()
+    router.push({name:"home"})
+  }
 </script>
 
 <template>
 <nav class="navbar" role="navigation" aria-label="main navigation">
+
   <div class="navbar-brand">
     <router-link class="navbar-item padding-left" to="/">
         <img src="../assets/logo.png">
@@ -28,7 +36,7 @@
       </router-link>
     </div>
 
-    <div class="navbar-end">
+    <div v-if="!session.user" class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
           <router-link to="/signup" class="button is-primary">
@@ -40,6 +48,15 @@
         </div>
       </div>
     </div>
+
+      <div v-if="session.user" class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <button class="button is-light" @click="redirect();">Logout</button>
+          </div>
+        </div>
+      </div>
+
   </div>
 </nav>
 

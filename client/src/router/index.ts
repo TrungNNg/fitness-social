@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import LoginView from '../views/LoginView.vue'
-import DashboardView from '../views/DashboardView.vue'
+import AdminView from '../views/AdminView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import PageNotFoundView from '../views/404View.vue'
 
@@ -37,9 +37,9 @@ const router = createRouter({
       component: ProfileView
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: DashboardView
+      path: '/admin',
+      name: 'admin',
+      component: AdminView
     },
     // catch all 404
     {

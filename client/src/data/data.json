@@ -1,0 +1,30 @@
+[
+    {
+        "username": "Bob",
+        "password": "bob123",
+        "friends": ["Alice", "John", "Tom"],
+        "recently": ["task1", "task2", "task3"],
+        "workouts":["task1", "task2", "task3"]
+    },
+    {
+        "username": "Alice",
+        "password": "alice123",
+        "friends": ["Bob, John"],
+        "recently": ["task1", "task3"],
+        "workouts":["task1", "task2", "task3"]
+    },
+    {
+        "username": "John",
+        "password": "john123",
+        "friends": ["Alice", "Bob"],
+        "recently": [],
+        "workouts":[]
+    },
+    {
+        "username": "Tom",
+        "password": "tom123",
+        "friends": ["Bob"],
+        "recently": ["task1"],
+        "workouts":["task1", "task2", "task3"]
+    }
+]
