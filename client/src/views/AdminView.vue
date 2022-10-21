@@ -10,7 +10,7 @@
   // let say bob is admin
   session.user = {username:"Bob", index:0}
 
-  if (session.user?.username !== "Bob") {
+  if (session.user.username !== "Bob") {
     router.push({name:"home"})
   }
 
