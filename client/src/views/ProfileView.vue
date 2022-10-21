@@ -27,12 +27,12 @@
       friends_list.push( data[current_user.index].friends[i])
     }
     for (let i = 0; i < data[current_user.index].workouts.length; i++) {
-      const l :{username:string,profile_pic:string,caption:string,like:number} = <{username:string,profile_pic:string,caption:string,like:number}> data[current_user.index].workouts[i]
-      workouts_list.push(l)
+      //const l :{username:string,profile_pic:string,caption:string,like:number} = <{username:string,profile_pic:string,caption:string,like:number}> data[current_user.index].workouts[i]
+      workouts_list.push(data[current_user.index].workouts[i])
     }
     for (let i = 0; i < data[current_user.index].recently.length; i++) {
-      const l :{username:string,profile_pic:string,caption:string,like:number} = <{username:string,profile_pic:string,caption:string,like:number}> data[current_user.index].workouts[i]
-      recently_list.push(l)
+      //const l :{username:string,profile_pic:string,caption:string,like:number} = <{username:string,profile_pic:string,caption:string,like:number}> data[current_user.index].workouts[i]
+      recently_list.push(data[current_user.index].workouts[i])
     }
   }
 
