@@ -21,7 +21,7 @@ import {RouterLink} from 'vue-router'
             <div class="container has-text-centered">
                 <div class="columns is-vcentered">
                     <div class="column is-5">
-                        <figure class="image is-4by3">
+                        <figure class="image is-4b3">
                             <img src="../assets/gym.jpg" alt="Description">
                         </figure>
                     </div>

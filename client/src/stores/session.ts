@@ -27,8 +27,8 @@ export function logout() {
 }
 
 export class User {
-    public username?: string;
-    public index?: Number;
+    public username!: string;
+    public index!: number;
 }
 
 export default session;

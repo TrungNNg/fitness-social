@@ -59,6 +59,15 @@ create and connect to MongoDB Atlas [X]
 [X] finish styling home page, login, logout, user edit, user exercise list
 [X] edit exercise form
 [X] create footer component
+[X] deploy to render
+[X] fix session user to non optional
+[X] fix profile page type
+[X] craete add exercise form
+[X] create exercise component
+[X] create table for database
+[X] add type-check to package.json
+[ ] re-deploy
+
 [ ] add pinia a list of all task
 
 [X] define user table (collection)
