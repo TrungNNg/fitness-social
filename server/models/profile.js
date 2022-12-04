@@ -6,11 +6,19 @@ async function collection(){
     return client.db('production').collection('user');
 }
 
-async function get_all_users() {
+//###### get_all_users and add_user is for login and register 
+async function login_user(data) {
     const db = await collection();
-    const data = await db.find().toArray()
-    return data
+    const result = await db.findOne({username:data.username, password:data.password})
+    console.log(result)
+    return result
 }
+// user is object {username: "", password: ""}
+async function add_user(user) {
+    const db = await collection()
+    return await db.insertOne({...user, bio:"", picture:"", friends:[]})
+}
+//#####
 
 async function get_user(userId) {
     const db = await collection()
@@ -37,4 +45,4 @@ async function remove_friend (userID, friend_id) {
     )
 }
 
-module.exports = { update_user_info, remove_friend, get_user}
+module.exports = { update_user_info, remove_friend, get_user, login_user, add_user}
