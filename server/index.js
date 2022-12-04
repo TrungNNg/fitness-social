@@ -7,7 +7,8 @@ const port = process.env.PORT || 3000;
 const profile_controller = require('./controllers/profile')
 // import auth route
 const auth_controller = require('./controllers/auth')
-
+// import exercise post route
+const exercise_controller = require('./controllers/exercise')
 
 app.use((req, res, next) => {;
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -24,7 +25,8 @@ app.use(express.json());
 app.use('/profile', profile_controller)
 // register auth route
 app.use('/auth', auth_controller)
-
+// register exercise route
+app.use('/post', exercise_controller)
 
 /*
 app.get('/exercise', (req, res) => {
