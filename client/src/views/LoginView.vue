@@ -1,31 +1,40 @@
 <script setup lang="ts">
-import router from '@/router';
 import {ref} from 'vue';
-import session,{login} from '../stores/session.js';
+import router from '@/router';
 
-let username = ref("")
-let password = ref("")
-let has_error = ref(false)
+const username = ref("")
+const password = ref("")
+const has_error = ref(false)
+
+const user = ref({})
+
 
 //console.log(session.user)
 
 function submit() {
-    has_error.value = false
-    if (username.value === "" || password.value === "") {
+    if (username.value === "" || password.value === ""){
         has_error.value = true
         return
     }
-    login(username.value, password.value)
-    //console.log(session.user)
 
-    //if (session.user != null) {
-    router.push({name:"profile"})
-        //console.log("router passed")
-    //}
-}
-
-function hasError() {
-    return has_error.value
+    fetch(import.meta.env.VITE_API_ROOT + 'auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            username: username.value,
+            password: password.value
+        })
+    })
+    .then(res => {
+        if (res.status == 200) {
+            user.value = res.json()
+            router.push('profile')
+        } else {
+            has_error.value = true
+        }
+    })
 }
 
 </script>
@@ -35,10 +44,6 @@ function hasError() {
     <br/>
     <div class="column is-4 is-offset-4">
         <div class="title">Login</div>
-        <div style="color:red" >Try login with username: Bob ,password: bob123</div>
-        <div>or go to "/admin" route to see mockdata, the "/admin" route is not protected
-            to see the mock data, but the "/profile" require user login.
-        </div>
         <div class="field">
             <label class="label">username</label>
             <div class="control">
@@ -55,7 +60,7 @@ function hasError() {
         <div>
             <button class="button is-link" @click="submit">submit</button>
         </div>
-        <div v-if="hasError()">ERROR WILL DISPLAY HERE (no account with username, wrong username or password)</div>
+        <div v-if="has_error" class="has-text-danger">ERROR (wrong username or password)</div>
 
         <br/>
         <br/>

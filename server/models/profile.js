@@ -1,4 +1,3 @@
-const profile = require('../testDB/profile.json')
 const { connect } = require('./mongo');
 
 async function collection(){

@@ -14,7 +14,13 @@ app.post('/register', (req, res, next) => {
 // send all user to frontend
 app.post('/login', (req, res, next) => {
     login_user(req.body)
-        .then(x => res.status(200).send(x))
+        .then(x => {
+            if (x) {
+                res.status(200).send(x)
+            } else {
+                res.status(400).send({error:'no user with given data'})
+            }
+        })
         .catch(next)
 })
 

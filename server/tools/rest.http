@@ -33,13 +33,13 @@ Content-Type: application/json
     "caption":"THIS IS TOM POST"
 }
 
-###
+###, json
 DELETE http://127.0.0.1:3000/post/638cf4aae97620c1b7d7b7c9
 
-###
+###, json
 PATCH http://127.0.0.1:3000/post/638cf509645e4a6b07549f56
 
-### TEST auth route
+### TEST auth route, return json
 POST http://127.0.0.1:3000/auth/register
 Content-Type: application/json
 
@@ -48,7 +48,7 @@ Content-Type: application/json
     "password":"doug123"
 }
 
-### TEST login
+### TEST login, return json
 POST http://127.0.0.1:3000/auth/login
 Content-Type: application/json
 
