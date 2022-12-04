@@ -6,6 +6,7 @@ import LoginView from '../views/LoginView.vue'
 import AdminView from '../views/AdminView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import PageNotFoundView from '../views/404View.vue'
+import TestView from '../views/TestView.vue'
 
 
 const router = createRouter({
@@ -41,12 +42,17 @@ const router = createRouter({
       name: 'admin',
       component: AdminView
     },
+    {
+      path: '/test',
+      name: 'test',
+      component: TestView
+    },
     // catch all 404
     {
       path: '/:catchAll(.*)',
       name: 'NotFound',
       component: PageNotFoundView
-    }
+    },
   ]
 })
 

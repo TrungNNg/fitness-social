@@ -1,0 +1,28 @@
+http://127.0.0.1:3000/
+
+###
+http://127.0.0.1:3000/test
+
+###
+http://127.0.0.1:3000/profile/1
+
+
+###
+PATCH http://127.0.0.1:3000/profile/1/5
+
+###
+POST http://127.0.0.1:3000/profile/1/
+Content-Type: application/json
+
+{
+    "username":"Bob",
+    "password":"bob123",
+    "email":"Bob@yahoo.com",
+    "bio":"Hi I am Bob I like jogging."
+}
+
+###
+DELETE http://127.0.0.1:3000/profile/1/5
+
+
+### TEST exercise log
