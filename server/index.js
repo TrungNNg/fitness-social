@@ -28,11 +28,6 @@ app.use('/auth', auth_controller)
 // register exercise route
 app.use('/post', exercise_controller)
 
-/*
-app.get('/exercise', (req, res) => {
-    res.send(exercise_data)
-})*/
-
 app.get('*', (req, res) => {
     res.sendFile('index.html', {root: '../client/dist'});
 })

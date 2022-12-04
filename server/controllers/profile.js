@@ -1,31 +1,46 @@
 const express = require('express');
-const { get, update_user_info, add_friend, remove_friend, update_picture } = require('../models/profile');
+const { ObjectId } = require('mongodb');
+const {update_user_info, remove_friend, get_user } = require('../models/profile');
 
 const app = express.Router();
 
-// return user object that match with id, or undefined or no match id
-app.get('/:userId', (req, res) => {
-    res.send(get(+req.params.userId));
-});
-
-// update user's username, password, email, bio
-app.post('/:userID/', (req, res) => {
-    res.send(update_user_info(+req.params.userID, req.body))
+// remove friend
+app.delete('/:userID/:id', (req, res, next) => {
+    remove_friend(ObjectId(req.params.userID), ObjectId(req.params.id))
+        .then( x => {
+            if (x.acknowledged) {
+                res.status(200).send('delete friend')
+            } else {
+                res.status(404).send('can not delete friend')
+            }
+        })
+        .catch(next)
 })
 
-// add to friend list
-app.patch('/:userID/:id', (req, res) => {
-    res.send(add_friend(+req.params.userID, +req.params.id))
+// GET get user by objectId
+app.get('/:userId', (req, res, next) => {
+    get_user(ObjectId(req.params.userId))
+        .then( user => {
+            if (user) {
+                res.status(200).send(user)
+            } else {
+                res.status(404).send('user not found')
+            }
+        })
+        .catch(next)
 })
 
-// remove from friend list
-app.delete('/:userID/:id', (req, res) => {
-    res.send(remove_friend(+req.params.userID, +req.params.id))
-})
-
-// update profile picture
-app.patch('/:userID/picture/:link', (req, res) => {
-    res.send(update_picture(+req.params.userID, req.params.link))
+// POST update user info
+app.post('/:userId', (req, res, next) => {
+    update_user_info(ObjectId(req.params.userId), req.body)
+    .then(x => {
+        if (x.acknowledged) {
+            res.status(200).send('updated')
+        } else {
+            res.status(404).send('can not update')
+        }
+    })
+    .catch(next)
 })
 
 module.exports = app;

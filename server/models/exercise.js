@@ -1,29 +1,33 @@
-const exercise = require('../testDB/exercise.json')
-const profile = require('../testDB/profile.json')
+const { connect } = require('./mongo');
 
-// return list of all user post
-const get_all_post = (userID) => {
-    let user_posts = exercise.filter( (post) => post.id === userID)
-    const user_index = profile.findIndex((user) => user.id === userID);
-    for (let i = 0; i < profile[user_index].friends.length; i++) {
-        user_posts = user_posts.concat(exercise.filter((post) => post.id === profile[user_index].friends[i]))
-    }
-    return user_posts
+async function collection(){
+    const client = await connect();
+    return client.db('production').collection('post');
 }
 
-// add post
-const add_post = () => {
-
+// add post, post is {userId:ObjectId ,image:"link", caption:""}
+async function add_post(post) {
+    const db = await collection()
+    return await db.insertOne({...post, like:0})
+}
+// return a user's post
+async function display_post(userId) {
+    const db = await collection()
+    return await db.find({userId:userId}).toArray()
 }
 
 // delete post
-const delete_post = () => {
-
+// TODO: make sure a user can only delete their post
+async function delete_post(postId) {
+    const db = await collection()
+    return await db.deleteOne({_id:postId})
 }
 
 // like post
-const like_post = () => {
-
+// TODO: a user can only like a post once
+async function like_post(postId) {
+    const db = await collection()
+    return await db.updateOne({_id:postId}, {$inc:{like:1}})
 }
 
-module.exports = {get_all_post, add_post, delete_post, like_post}
+module.exports = {add_post, display_post, delete_post, like_post}
