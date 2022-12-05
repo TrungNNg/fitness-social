@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import {reactive, ref} from 'vue';
   import { RouterLink } from 'vue-router';
-  //import data from '../data/data.json';
   import data from "../data/data.json";
-  import session, {User} from '../stores/session.js';
+  //import session, {User} from '../stores/session.js';
   import router from '../router'
   import Exercise from '../components/Exercise.vue'
 
+  /*
   const task_name = ref("")
   const current_user = new User()
   const friends_list:string[] = reactive([])
@@ -39,6 +39,7 @@
   console.log(workouts_list)
   console.log(recently_list)
   console.log(friends_list)
+  
 
   function addTask() {
     workouts_list.push({username:current_user.username,profile_pic:"",caption:task_name.value,like:0})
@@ -83,11 +84,13 @@
     }
     return []
   }
+  */
 
 </script>
 
 <template> 
 
+    <!---
     <div class="title" v-if="session.user != null">Wellcome {{session.user.username}}</div>
     <router-link to="admin">Click here to go to admin page</router-link> 
     <div class="section">
@@ -95,9 +98,9 @@
       <div style="color:red">All image is the same because they are from the same API, however
         all post are separate with different data. Try to add a caption for a post.
       </div>
-      <input class="input" v-model="task_name">
+      <input class="input" >
       <div class="block">
-        <button class="button is-info" @click="addTask()">Submit Post</button>
+        <button class="button is-info" @click="">Submit Post</button>
       </div>
       <div class="subtitle">Here are your current activity</div>
       <div style="color:red">If you delete a post it will go to Recently Done activities list.</div>
@@ -122,7 +125,7 @@
     <section class="section">
       <div class="columns is-centered">
         <div class="column">
-          <nav class="panel is-success"  v-for="f in friends_list">
+          <nav class="panel is-success"  v-for="f in ">
             <p class="panel-heading">{{f}}'s recently done</p>         
             <div v-for="fre in friendRecently(f)" :key="fre.caption">
               <Exercise :post=fre :own="false" />
@@ -131,5 +134,5 @@
         </div>
       </div>     
     </section>
-    
+    --->
 </template>

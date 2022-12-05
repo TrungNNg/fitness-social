@@ -1,10 +1,14 @@
-export const API_ROOT = 'http://localhost:3000/';
 const root_url = import.meta.env.VITE_API_ROOT;
 
-console.log(root_url);
+//export const API_ROOT = 'https://dummyjson.com/';
 
-export default function myFetch<T>(url:String): Promise<T> {
-    console.log("fetch hit")
-    return fetch(API_ROOT + url).then(x =>  x.json())
+export default function myFetch<T>(url: string, data: any = null, method?: string ): Promise<T> {
+    const options: RequestInit = {
+        method: method ?? (data ? 'POST' : 'GET'),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: data ? JSON.stringify(data) : undefined,
+    };
+    return fetch(root_url + url, options).then( x=>x.json() );
 }
-

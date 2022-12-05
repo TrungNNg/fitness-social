@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import {ref} from 'vue';
-import router from '@/router';
+//import router from '@/router';
+//import session, {User} from '../stores/session';
 
 const username = ref("")
 const password = ref("")
 const has_error = ref(false)
-
-const user = ref({})
-
-
-//console.log(session.user)
 
 function submit() {
     if (username.value === "" || password.value === ""){
@@ -29,8 +25,10 @@ function submit() {
     })
     .then(res => {
         if (res.status == 200) {
-            user.value = res.json()
-            router.push('profile')
+            // TODO : create User interface for user document, create fetch return User promise
+            // TODO : craete post interface, create getch return post promise
+            //session.user = res.json()
+            //router.push('profile')
         } else {
             has_error.value = true
         }
