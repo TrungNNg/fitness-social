@@ -5,6 +5,11 @@ async function collection(){
     return client.db('production').collection('user');
 }
 
+async function get_all_users() {
+    const db = await collection();
+    return await db.find().toArray()
+}
+
 //###### get_all_users and add_user is for login and register 
 async function login_user(data) {
     const db = await collection();
@@ -44,4 +49,4 @@ async function remove_friend (userID, friend_id) {
     )
 }
 
-module.exports = { update_user_info, remove_friend, get_user, login_user, add_user}
+module.exports = { update_user_info, remove_friend, get_user, login_user, add_user, get_all_users}

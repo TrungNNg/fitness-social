@@ -6,6 +6,7 @@
     const password = ref("");
     const status   = ref(false);
 
+    // add user's username and password to DB
     function submit() {
         console.log('submit hit')
         fetch(import.meta.env.VITE_API_ROOT + 'auth/register', {
@@ -34,6 +35,9 @@
     <br/>
     <br/>
     <div class="column is-4 is-offset-4">
+        <div class="subtitle">You can sign up for new user, new user will be recorded to database
+            . Or you can login with username: "Bob" password: "bob123"
+      </div>
         <div class="title">Sign Up</div>
 
         <div class="field">

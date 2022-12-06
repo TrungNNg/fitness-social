@@ -11,14 +11,15 @@ app.post('/register', (req, res, next) => {
         .catch(next)
 })
 
-// send all user to frontend
+// return user with match login and password
+// if no math return empty user
 app.post('/login', (req, res, next) => {
     login_user(req.body)
         .then(x => {
             if (x) {
                 res.status(200).send(x)
             } else {
-                res.status(400).send({error:'no user with given data'})
+                res.status(400).send({id:'',username:'',password:'',bio:'',picture:'',friends:[]})
             }
         })
         .catch(next)

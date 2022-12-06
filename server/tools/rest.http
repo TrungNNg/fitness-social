@@ -1,11 +1,10 @@
 http://127.0.0.1:3000/
 
-###
+### get all users in user table
 http://127.0.0.1:3000/profile
 
-###
+### DONE IN FRONTEND
 http://127.0.0.1:3000/profile/638cbcfd7155f42bea703fb2
-
 
 ###
 POST http://127.0.0.1:3000/profile/638cbcfd7155f42bea703fb2
@@ -20,10 +19,10 @@ Content-Type: application/json
 DELETE http://127.0.0.1:3000/profile/638cbcfd7155f42bea703fb2/638cbcfd7155f42bea703fb2
 
 
-### TEST exercise log
+### TEST exercise log, GET ALL POST USE USERID
 GET http://127.0.0.1:3000/post/638cbcfd7155f42bea703fb2
 
-###
+### ADD POST
 POST http://127.0.0.1:3000/post/
 Content-Type: application/json
 
@@ -39,7 +38,7 @@ DELETE http://127.0.0.1:3000/post/638cf4aae97620c1b7d7b7c9
 ###, json
 PATCH http://127.0.0.1:3000/post/638cf509645e4a6b07549f56
 
-### TEST auth route, return json
+### TEST auth route, return json, DONE IN FRONTEND
 POST http://127.0.0.1:3000/auth/register
 Content-Type: application/json
 
@@ -48,7 +47,7 @@ Content-Type: application/json
     "password":"doug123"
 }
 
-### TEST login, return json
+### TEST login, return json, DONE in frontend
 POST http://127.0.0.1:3000/auth/login
 Content-Type: application/json
 

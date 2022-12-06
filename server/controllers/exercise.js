@@ -9,9 +9,9 @@ app.post('/', (req, res, next) => {
     add_post(req.body)
         .then(result => {
             if (result.insertedId) {
-                res.status(200).send('added post')
+                res.status(200).send({message:'added post'})
             } else {
-                res.status(400).send('can not add post')
+                res.status(400).send({message:'can not add post'})
             }
         })
         .catch(next)

@@ -1,38 +1,33 @@
 <script setup lang="ts">
 import {ref} from 'vue';
-//import router from '@/router';
-//import session, {User} from '../stores/session';
+import router from '@/router';
+import session, {loginUser, getAllUser, type User} from '../stores/session';
 
 const username = ref("")
 const password = ref("")
 const has_error = ref(false)
+
+getAllUser().then(() => {
+    console.log(session.all_users)
+})
 
 function submit() {
     if (username.value === "" || password.value === ""){
         has_error.value = true
         return
     }
-
-    fetch(import.meta.env.VITE_API_ROOT + 'auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify({
-            username: username.value,
-            password: password.value
+    
+    // if correct username and password, set session.user and redirect to profile page
+    loginUser(username.value, password.value)
+        .then(x => {
+            if (x._id === ''){
+                has_error.value = true
+            } else {
+                //console.log('correct username and password')
+                session.user = x
+            }
         })
-    })
-    .then(res => {
-        if (res.status == 200) {
-            // TODO : create User interface for user document, create fetch return User promise
-            // TODO : craete post interface, create getch return post promise
-            //session.user = res.json()
-            //router.push('profile')
-        } else {
-            has_error.value = true
-        }
-    })
+        .then(() => router.push('profile'))
 }
 
 </script>
@@ -41,6 +36,7 @@ function submit() {
    <br/>
     <br/>
     <div class="column is-4 is-offset-4">
+        <div class="subtitle">You can register new user or use username:"Bob" password:"bob123"</div>
         <div class="title">Login</div>
         <div class="field">
             <label class="label">username</label>

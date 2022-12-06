@@ -4,14 +4,22 @@ import myFetch from '../fetch/fetch'
 
 const session = reactive( {
     user: null as User | null,
+    all_users:[] as User[]
 });
+
+// get list of all user and store in all_users
+export function getAllUser() {
+    return myFetch('profile/').then(data => {
+        session.all_users.splice(0, session.all_users.length, ...data as User[])
+    })
+}
 
 export function getUser(id:string) {
     return myFetch<User>('profile/' + id)
 }
 
 export function loginUser(username:string, password:string) {
-    return myFetch('auth/login', {username:username, password:password})
+    return myFetch<User>('auth/login', {username:username, password:password})
 }
 
 export function logout() {
@@ -21,7 +29,7 @@ export function logout() {
 }
 
 export interface User {
-    id:string
+    _id:string
     username:string
     password:string
     bio:string
