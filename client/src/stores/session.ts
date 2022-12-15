@@ -4,8 +4,16 @@ import myFetch from '../fetch/fetch'
 
 const session = reactive( {
     user: null as User | null,
-    all_users:[] as User[]
+    all_users:[] as User[],
+    searched_users: [] as User[]
 });
+
+export function searchUser(q: string) {
+    return myFetch('final/', {username:q}).then(data => {
+        session.searched_users.splice(0, session.searched_users.length, ...data as User[])
+    })
+}
+
 
 // get list of all user and store in all_users
 export function getAllUser() {

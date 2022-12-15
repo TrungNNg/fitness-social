@@ -1,6 +1,6 @@
 const express = require('express');
 const { ObjectId } = require('mongodb');
-const {update_user_info, remove_friend, get_user, get_all_users } = require('../models/profile');
+const {update_user_info, remove_friend, get_user, get_all_users} = require('../models/profile');
 
 const app = express.Router();
 

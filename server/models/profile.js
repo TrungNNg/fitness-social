@@ -49,4 +49,12 @@ async function remove_friend (userID, friend_id) {
     )
 }
 
-module.exports = { update_user_info, remove_friend, get_user, login_user, add_user, get_all_users}
+// FINAL
+async function searchUser(q) {
+    const db = await collection()
+    const data = await db.find({username:{$regex: q, $options: 'i'}}).toArray()
+    return data
+}
+
+
+module.exports = { update_user_info, remove_friend, get_user, login_user, add_user, get_all_users, searchUser}

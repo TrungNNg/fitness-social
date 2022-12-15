@@ -9,6 +9,8 @@ const profile_controller = require('./controllers/profile')
 const auth_controller = require('./controllers/auth')
 // import exercise post route
 const exercise_controller = require('./controllers/exercise')
+// import final route
+const final_controller = require('./controllers/final')
 
 app.use((req, res, next) => {;
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -27,6 +29,8 @@ app.use('/profile', profile_controller)
 app.use('/auth', auth_controller)
 // register exercise route
 app.use('/post', exercise_controller)
+// register final route
+ app.use('/final', final_controller)
 
 app.get('*', (req, res) => {
     res.sendFile('index.html', {root: '../client/dist'});
